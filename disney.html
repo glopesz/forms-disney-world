@@ -1,120 +1,167 @@
-<html> 
-	<head>
-		<meta charset="UTF-8">
-		<title>Agendamento Disney World</title>
-	</head>
-	<body>
-		<h1>Agendamento de Atividade-Disney World</h1>
-		<form 	action="agendaDisney.php" 
-				method="post"
-				enctype="multipart/form-data"
-		>
-		<!-- enctype habilita anexos  -->
-			RESORT: 
-			<input 	name="resort" 
-					type="text" 
-					value="Disney World Orlando"
-					readonly
-			> <br>
-			Senha:	<input  type="password" 
-					name="senha"
-					maxlength="10"> <br>
-			
-			<!-- maxlenght define o número máximo
-					de caracteres
-				-->
-			Preenchimento: 1/5 
-			<progress max="5" value="1" step="2"></progress>
-			<hr>	
-			Nome do responsável:
-			<input 	type="text"
-					name="responsavel"
-					maxlength="80"
-					size="80"
-					placeholder="Informe nome completo">
-			<br>	
-			
-			N&ordm; de familiares (incluindo crianças):
-			<input 	type="number" 
-					name="familiares"
-					min="1"
-					max="99" > <br/>	
-			<fieldset>
-				<legend>Sexo</legend>
-				
-				<input 	type="radio" 
-						name="sexo"
-						value="M"> Masculino
-				
-				<input 	type="radio" 
-						name="sexo"
-						checked
-						value="F"> Feminino
-			</fieldset>
-			
-				
-				e-mail:
-			<input 	type="email"
-					name="email"
-					maxlength="100"
-					size="100"
-					required>
-			<br>
-			<input 	type="checkbox"
-					name="recEmails"
-					value="s"
-					checked> Quero receber e-mails<br>
-			<hr>
-			
-			<h3>Acesso ao Parque</h3>
-				
-				Data da visita:
-				<input 	type="date"
-						name="dataVisita"
-						min="2019-01-01"
-						max="2023-12-31"
-						required>
-				- Hora da Entrada:
-				<input	type="time"
-						name="horaVisita"
-						min="08:00:00"> <br>
-						
-				Cor da Pulseira:
-				<input 	type="color"
-						name="corPulseira"
-						value="#7F00FF"> <br>
-						
-				Número de atrações a visitar: 
-				 <input	type="range"
-						name="atracoes"
-						min="1"
-						max="10"> 10 <br>
-						
-				Foto da Família:
-				<input	type="file"
-						name="foto"> <br>
-						<!-- ao usar file, deve-se adicionar
-								a propriedade enctype no form-->
-				<h3>Preferências de Comida</h3>
-				<textarea	name="comida"
-					placeholder="Insira suas preferências aqui"
-							rows="3"
-							cols="80">
-							
-				</textarea>
-				<hr>
-				
-			<h3>Você concorda com os termos?</h3>
-			<select name="aceite">
-				<option value="s">Sim</option>
-				<option value="n">Não</option>
-			</select><br/>
-			
-			
-			<input type="submit" value="Enviar">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Agendamento de Atividade | Walt Disney World</title>
+	<link rel="stylesheet" href="disney.css">
+</head>
+<body>
+	<header class="site-header">
+		<a class="brand" href="#" aria-label="Walt Disney World">
+			<span class="brand-mark" aria-hidden="true">✦</span>
+			<span><small>Conselho de experiências</small>Walt Disney World</span>
+		</a>
+		<nav class="header-links" aria-label="Links rápidos">
+			<a href="#agendamento">✨ Seu sonho começa aqui</a>
+			<a href="#confirmacao">Central de ajuda</a>
+		</nav>
+	</header>
+
+	<main id="agendamento">
+		<section class="intro" aria-labelledby="page-title">
+			<p class="eyebrow">Uma experiência mágica espera por você</p>
+			<h1 id="page-title">Agendamento de atividade</h1>
+			<p>Preencha os dados abaixo para planejar um dia inesquecível no Walt Disney World.</p>
+		</section>
+
+		<form action="agendaDisney.php" method="post" enctype="multipart/form-data">
+			<div class="reservation-bar">
+				<div class="field">
+					<label for="resort">Resort selecionado</label>
+					<input id="resort" name="resort" type="text" value="Disney World Orlando" readonly>
+				</div>
+				<div class="field">
+					<label for="senha">Senha</label>
+					<input id="senha" name="senha" type="password" maxlength="10" autocomplete="current-password">
+				</div>
+				<div>
+					<span class="field-label">Preenchimento: 1/5</span>
+					<progress max="5" value="1">1 de 5</progress>
+					<span class="progress-caption">Sua jornada está começando</span>
+				</div>
+			</div>
+
+			<section class="card" aria-labelledby="personal-title">
+				<div class="card-heading">
+					<span class="step" aria-hidden="true">01</span>
+					<div>
+						<h2 id="personal-title">Dados do responsável e família</h2>
+						<p>Conte um pouco sobre quem vai viver essa aventura.</p>
+					</div>
+				</div>
+				<div class="form-grid">
+					<div class="field">
+						<label for="responsavel">Nome do responsável</label>
+						<input id="responsavel" name="responsavel" type="text" maxlength="80" placeholder="Informe seu nome completo">
+					</div>
+					<div class="field">
+						<label for="familiares">Nº de familiares <span class="hint">(incluindo crianças)</span></label>
+						<input id="familiares" name="familiares" type="number" min="1" max="99">
+					</div>
+					<fieldset class="field span-2" style="border: 0; margin: 0; padding: 0">
+						<legend class="field-label">Sexo</legend>
+						<div class="inline-options">
+							<label class="option"><input type="radio" name="sexo" value="M"> Masculino</label>
+							<label class="option"><input type="radio" name="sexo" value="F" checked> Feminino</label>
+						</div>
+					</fieldset>
+					<div class="field span-2">
+						<label for="email">E-mail</label>
+						<input id="email" name="email" type="email" maxlength="100" autocomplete="email" required>
+					</div>
+				</div>
+				<label class="email-choice">
+					<input type="checkbox" name="recEmails" value="s" checked>
+					Quero receber novidades e e-mails com informações sobre experiências no parque.
+				</label>
+			</section>
+
+			<section class="card" aria-labelledby="park-title">
+				<div class="card-heading">
+					<span class="step" aria-hidden="true">02</span>
+					<div>
+						<h2 id="park-title">Acesso ao parque e experiência</h2>
+						<p>Escolha os detalhes para aproveitar o seu dia.</p>
+					</div>
+				</div>
+				<div class="form-grid">
+					<div class="field">
+						<label for="dataVisita">Data da visita</label>
+						<input id="dataVisita" name="dataVisita" type="date" min="2019-01-01" max="2023-12-31" required>
+					</div>
+					<div class="field">
+						<label for="horaVisita">Hora da entrada</label>
+						<input id="horaVisita" name="horaVisita" type="time" min="08:00:00">
+					</div>
+					<div class="field span-2">
+						<span class="field-label">Cor da pulseira</span>
+						<div class="color-options">
+							<label class="color-choice"><input type="color" name="corPulseira" value="#7F00FF" aria-label="Escolha a cor da pulseira"> Personalizada</label>
+						</div>
+					</div>
+					<div class="field span-2">
+						<label for="atracoes">Número de atrações a visitar</label>
+						<div class="range-line">
+							<input id="atracoes" name="atracoes" type="range" min="1" max="10" value="10" oninput="document.getElementById('atracoes-valor').value = this.value">
+							<output class="range-value" id="atracoes-valor" for="atracoes">10</output>
+						</div>
+						<span class="hint">Arraste para escolher de 1 a 10 atrações.</span>
+					</div>
+					<div class="field span-2">
+						<label for="foto">Foto da família</label>
+						<div class="upload-box">
+							<strong>Adicione uma foto especial</strong>
+							<span class="hint">Selecione uma imagem da sua família para personalizar o agendamento.</span>
+							<input id="foto" type="file" name="foto" accept="image/*">
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="card" aria-labelledby="food-title">
+				<div class="card-heading">
+					<span class="step" aria-hidden="true">03</span>
+					<div>
+						<h2 id="food-title">Preferências de comida e atrações</h2>
+						<p>Compartilhe preferências para deixar o passeio ainda mais especial.</p>
+					</div>
+				</div>
+				<div class="field">
+					<label for="comida">Descreva suas preferências</label>
+					<textarea id="comida" name="comida" placeholder="Conte para nós sobre suas preferências de comida, atrações favoritas ou outras informações importantes."></textarea>
+				</div>
+			</section>
+
+			<section class="card" id="confirmacao" aria-labelledby="confirm-title">
+				<div class="card-heading">
+					<span class="step" aria-hidden="true">04</span>
+					<div>
+						<h2 id="confirm-title">Termos e confirmação</h2>
+						<p>Revise as informações antes de enviar seu agendamento.</p>
+					</div>
+				</div>
+				<div class="confirmation">
+					<div class="field">
+						<label for="aceite">Você concorda com os termos?</label>
+						<select id="aceite" name="aceite">
+							<option value="s">Sim, concordo com os termos</option>
+							<option value="n">Não concordo</option>
+						</select>
+					</div>
+					<span class="hint">Ao continuar, confirme que os dados estão corretos.</span>
+				</div>
+				<div class="actions">
+					<button type="reset">Refazer formulário</button>
+					<button type="submit">Enviar agendamento agora <span aria-hidden="true">→</span></button>
+				</div>
+			</section>
 		</form>
-	</body>
+	</main>
+
+	<footer>
+		<strong>Um dia mágico espera por você.</strong><br>
+		Este formulário é um projeto de estudo, criado para fins educacionais.
+	</footer>
+</body>
 </html>
-
-
-<!-- enctype habilita anexos enctype="multipart/form-data" -->
